@@ -20,8 +20,8 @@ int binary_tree_height(const binary_tree_t *tree)
 /**
  * is_perfect_helper - Helper function to check if the tree is perfect.
  * @tree: Pointer to the node to check.
- * @depth: Current depth to check.
- * @level: Current level of the tree.
+ * @depth: The expected depth of the tree.
+ * @level: The current level of the node.
  *
  * Return: 1 if the tree is perfect, 0 otherwise.
  */
