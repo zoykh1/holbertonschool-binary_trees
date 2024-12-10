@@ -70,7 +70,7 @@ void print_num(int n) { printf("%d\n", n); }
 binary_tree_preorder(root, &print_num)
 ```
 .SH AUTHOR
-[Ahmet(Zoy - Enzo)]
+[Ahmet(Zoy - Yassin)]
 
 
 ## Authors
