@@ -1,44 +1,53 @@
 #include "binary_trees.h"
-
 /**
- * height - Computes the height of a binary tree.
- * @tree: A pointer to the root node of the tree.
+ * binary_tree_balance - Measures the balance factor of a binary tree
  *
- * Return: The height of the tree.
- */
-int height(const binary_tree_t *tree)
-{
-	if (tree == NULL)
-		return (0);
-	return (1 + (max(height(tree->left), height(tree->right))));
-}
-
-/**
- * max - Returns the maximum of two integers.
- * @a: The first integer.
- * @b: The second integer.
+ * @tree: Pointer to the root node of the tree to measure the balance factor
+ * Description: Measures the balance factor of a binary tree
+ * The balance factor is the difference between the height of the left subtree
+ * A NULL pointer is not a node
  *
- * Return: The maximum of a and b.
- */
-int max(int a, int b)
-{
-	return ((a > b) ? a : b);
-}
-
-/**
- * binary_tree_balance - Measures the balance factor of a binary tree.
- * @tree: A pointer to the root node of the tree.
- *
- * Return: The balance factor of the tree.
- *         0 if tree is NULL.
+ * Return: Balance factor of the tree, or 0 if tree is NULL
  */
 int binary_tree_balance(const binary_tree_t *tree)
 {
+	int left_height = 0, right_height = 0;
+
 	if (tree == NULL)
+	{
 		return (0);
-
-	int left_height = height(tree->left);
-	int right_height = height(tree->right);
-
+	}
+	if (tree->left)
+	{
+		left_height = binary_tree_height(tree->left) + 1;
+	}
+	if (tree->right)
+	{
+		right_height = binary_tree_height(tree->right) + 1;
+	}
 	return (left_height - right_height);
+}
+/**
+ * binary_tree_height - Measures the height of a binary tree
+ *
+ * @tree: Pointer to the root node of the tree to measure the height
+ * Return: Height of the tree, 0 if tree is NULL
+ */
+size_t binary_tree_height(const binary_tree_t *tree)
+{
+	size_t left_height = 0, right_height = 0;
+
+	if (tree == NULL)
+	{
+		return (0);
+	}
+	if (tree->left)
+	{
+		left_height = binary_tree_height(tree->left) + 1;
+	}
+	if (tree->right)
+	{
+		right_height = binary_tree_height(tree->right) + 1;
+	}
+	return ((left_height > right_height) ? left_height : right_height);
 }
